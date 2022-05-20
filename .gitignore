@@ -2,6 +2,7 @@
 data/
 
 *.pt
+*.pb
 
 # start generated gitignore
 # Byte-compiled / optimized / DLL files
