@@ -1,5 +1,5 @@
 path: ../datasets/ena/  # dataset root dir
-train: images/train100  # train images (relative to 'path') 128 images
+train: images/train20  # train images (relative to 'path') 128 images
 val: images/val  # val images (relative to 'path') 128 images
 test:  images/test # test images (optional)
 
