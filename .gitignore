@@ -135,9 +135,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 *.ckpt
-models/VAE/lightning_logs/version_5/events.out.tfevents.1654617944.DESKTOP-7BH3FV9.13516.0
-models/VAE/lightning_logs/version_5/hparams.yaml
-models/VAE/lightning_logs/version_5/Reconstructions/recons_lightning_logs_Epoch_0.png
-models/VAE/lightning_logs/version_5/Reconstructions/recons_lightning_logs_Epoch_1.png
-models/VAE/lightning_logs/version_5/Samples/lightning_logs_Epoch_0.png
-models/VAE/lightning_logs/version_5/Samples/lightning_logs_Epoch_1.png
+models/VAE/lightning_logs/*
+models/VAE/lightning_logs/
