@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --partition=mcs.gpu.q
+#SBATCH --error=slurm-%j.err
+#SBATCH --output=slurm-%j.out
+#SBATCH --time=24:00:00
+
+source /home/mcs001/20204222/hpcenv/bin/activate
+module load cuda11.3/toolkit/11.3.0
+echo $CUDA_VISIBLE_DEVICES
+python ../testtorch.py
+
+
+### regular tests 100-5 640
+python -m torch.distributed.launch --name yolov5s_ena50graycmpr256--nproc_per_node 2 ../train.py --batch-size 16 --img 640 --epochs 300 --data ena100.yaml --weights yolov5l.pt --device 0,1
+python -m torch.distributed.launch --name yolov5s_ena50graycmpr256--nproc_per_node 2 ../train.py --batch-size 16 --img 640 --epochs 300 --data ena50.yaml --weights yolov5l.pt --device 0,1
+python -m torch.distributed.launch --name yolov5s_ena50graycmpr256--nproc_per_node 2 ../train.py --batch-size 16 --img 640 --epochs 300 --data ena20.yaml --weights yolov5l.pt --device 0,1
+python -m torch.distributed.launch --name yolov5s_ena50graycmpr256--nproc_per_node 2 ../train.py --batch-size 16 --img 640 --epochs 300 --data ena10.yaml --weights yolov5l.pt --device 0,1
+python -m torch.distributed.launch --name yolov5s_ena50graycmpr256--nproc_per_node 2 ../train.py --batch-size 16 --img 640 --epochs 300 --data ena5.yaml --weights yolov5l.pt --device 0,1
+
+python -m torch.distributed.launch --name yolov5s_ena50graycmpr256--nproc_per_node 2 ../train.py --batch-size 16 --img 640 --epochs 300 --data ena100.yaml --weights yolov5l.pt --device 0,1
+python -m torch.distributed.launch --name yolov5s_ena50graycmpr256--nproc_per_node 2 ../train.py --batch-size 16 --img 640 --epochs 300 --data ena50.yaml --weights yolov5l.pt --device 0,1
+python -m torch.distributed.launch --name yolov5s_ena50graycmpr256--nproc_per_node 2 ../train.py --batch-size 16 --img 640 --epochs 300 --data ena20.yaml --weights yolov5l.pt --device 0,1
+python -m torch.distributed.launch --name yolov5s_ena50graycmpr256--nproc_per_node 2 ../train.py --batch-size 16 --img 640 --epochs 300 --data ena10.yaml --weights yolov5l.pt --device 0,1
+python -m torch.distributed.launch --name yolov5s_ena50graycmpr256--nproc_per_node 2 ../train.py --batch-size 16 --img 640 --epochs 300 --data ena5.yaml --weights yolov5l.pt --device 0,1
+
+### tests 256
+
+
+### test compressed
+
+
+### test GHOST model

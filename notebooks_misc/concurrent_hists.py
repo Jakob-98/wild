@@ -15,7 +15,7 @@ from six.moves import cPickle as pickle #for performance
 from functools import partial
 
 
-ena_local = 'C:/temp/ena/images/val/'
+ena_local = 'C:/temp/ena/images/train100/'
 images = [os.path.split(i)[1] for i in glob.glob(ena_local + '/*.jpg', recursive=True)]
 
 def _getfeat(feats, image):
@@ -34,5 +34,5 @@ if __name__ == '__main__':
     with mp.Manager() as manager:
         feats = manager.dict()
         process_map(partial(_getfeat, feats), images, max_workers=12, chunksize=2)
-        save_dict(dict(feats), 'c:/temp/val.pkl')
+        save_dict(dict(feats), 'c:/temp/train100.pkl')
 

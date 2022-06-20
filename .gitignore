@@ -137,3 +137,4 @@ dmypy.json
 *.ckpt
 models/VAE/lightning_logs/*
 models/VAE/lightning_logs/
+models/lightning_logs
