@@ -7,8 +7,8 @@ import glob
 from matplotlib import pyplot as plt
 from scipy import ndimage
 import cv2 as cv
+import PIL
 
-global IMFAIL
 
 def getSequenceBGSub(seq_images):
     bgs = []
@@ -106,7 +106,8 @@ def letterbox(im, new_shape=(640, 640), color=(114, 114, 114), auto=True, scaleF
 
 
 def generate_boxed_by_sequence(seq_paths: list, size: int):
-    seq_images = [cv2.imread(img) for img in seq_paths]
+    # seq_images = [cv2.imread(img) for img in seq_paths]
+    seq_images = [np.array(PIL.Image.open(img)) for img in seq_paths]
     bgs = getSequenceBGSub(seq_images)
     imgs = []
     for i, bg in enumerate(bgs):
@@ -118,8 +119,8 @@ def generate_boxed_by_sequence(seq_paths: list, size: int):
         if (xmax-xmin) < 10 or (ymax - ymin) < 10:
             reshaped_img = img
         else:
-            xmin, xmax = max(xmin-15, 0), min(xmax+15, width)
-            ymin, ymax = max(ymin-15, 0), min(ymax+15, height)
+            xmin, xmax = max(xmin-15, 1), min(xmax+15, width)
+            ymin, ymax = max(ymin-15, 1), min(ymax+15, height)
             reshaped_img = img[ymin:ymax, xmin:xmax, :]
             if 0 in reshaped_img.shape or reshaped_img is None: reshaped_img = img
         imgs.append(reshaped_img)
