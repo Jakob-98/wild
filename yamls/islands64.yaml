@@ -1,0 +1,7 @@
+path: ../datasets/islands64/  # dataset root dir
+train: images/islands64 # train images (relative to 'path') 128 images
+val: images/islands64val # val images (relative to 'path') 128 images
+
+
+nc: 6 
+names: ['empty', 'other', 'fox', 'skunk', 'rodent', 'bird'} 

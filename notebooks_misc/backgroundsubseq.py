@@ -126,3 +126,4 @@ def generate_boxed_by_sequence(seq_paths: list, size: int):
         imgs.append(reshaped_img)
         imgs = [letterbox(im, size, auto=False)[0] for im in imgs]
     return imgs
+
