@@ -5,13 +5,19 @@ import glob
 import os
 from tqdm import tqdm
 import pickle
-from backgroundsubseq import generate_boxed_by_sequence
+# from backgroundsubseq import generate_boxed_by_sequence
+import backgroundsubseq
 import cv2
+
+#%%
+import importlib
+importlib.reload(backgroundsubseq)
+
 #%%
 datasetpath = "C:\Projects\wild\data\islands\images\images\\"
-picklepath = "C:/temp/islandsdataset/pickles/val20.pk"
-impath = "C:/temp/islandsdataset/images/val20/"
-labelpath = "C:/temp/islandsdataset/labels/val20/"
+picklepath = "C:/temp/islandsdataset/pickles/train10.pk"
+impath = "C:/temp/islandsdataset/images/64xtrain10/"
+labelpath = "C:/temp/islandsdataset/labels/"
 
 #%%
 with open(picklepath, 'rb') as f:
@@ -19,16 +25,16 @@ with open(picklepath, 'rb') as f:
 
 #%%
 sequences = list(set([i.get('seq_id') for i in meta_anno]))
-labellookup = {i.get('image_id'): i.get('category_id') for i in meta_anno}
+labellookup = {i.get('image_id'): str(i.get('category_id')).replace('6','1') for i in meta_anno}
 imgs_seq_lookup = {}
 for ma in meta_anno:
     imgs_seq_lookup.setdefault(ma.get('seq_id','empty'),[]).append(ma)
-for sequence in tqdm(sequences):
+for sequence in tqdm(sequences[811:814]):
     filenames = [i.get('file_name') for i in imgs_seq_lookup.get(sequence)]
     ids = [i.get('image_id') for i in imgs_seq_lookup.get(sequence)]
     p = lambda x: str(Path(datasetpath) / x)
     paths = [p(x) for x in filenames]
-    imgs = generate_boxed_by_sequence(paths, 224)
+    imgs = backgroundsubseq.generate_boxed_by_sequence(paths, 64)
     sequences.append(imgs)
     for im, fn in zip(imgs, ids):
         cv2.imwrite(impath + fn + '.jpg', im)

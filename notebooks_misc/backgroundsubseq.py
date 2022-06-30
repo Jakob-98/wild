@@ -121,9 +121,41 @@ def generate_boxed_by_sequence(seq_paths: list, size: int):
         else:
             xmin, xmax = max(xmin-15, 1), min(xmax+15, width)
             ymin, ymax = max(ymin-15, 1), min(ymax+15, height)
+            if abs(ymin - ymax) < size: # pad if size too low, but never pad beyond borders.
+                difference = (abs(ymin-ymax) - size)//2 + 1
+                maxpadheight = height - ymax
+                if ymin > difference and maxpadheight > difference:
+                    ymin -= difference
+                    ymax += difference
+                elif ymin > difference and maxpadheight <= difference:
+                    toppad = maxpadheight - 1
+                    bottompad = difference + maxpadheight
+                    ymin -= bottompad
+                    ymax += toppad
+                else: 
+                    toppad = difference + ymin
+                    bottompad = ymin - 1
+                    ymin += bottompad
+                    ymax += toppad
+            if abs(xmin - xmax) < size: # pad if size too low, but never pad beyond borders.
+                difference = (abs(xmin-xmax) - size)//2 + 1
+                maxpadheight = width - xmax
+                if xmin > difference and maxpadheight > difference:
+                    xmin -= difference
+                    xmax += difference
+                elif xmin > difference and maxpadheight <= difference:
+                    toppad = maxpadheight - 1
+                    bottompad = difference + maxpadheight
+                    xmin -= bottompad
+                    xmax += toppad
+                else: 
+                    toppad = difference + xmin
+                    bottompad = xmin - 1
+                    xmin += bottompad
+                    xmax += toppad
             reshaped_img = img[ymin:ymax, xmin:xmax, :]
             if 0 in reshaped_img.shape or reshaped_img is None: reshaped_img = img
         imgs.append(reshaped_img)
-        imgs = [letterbox(im, size, auto=False)[0] for im in imgs]
+    imgs = [letterbox(im, size, auto=False)[0] for im in imgs]
     return imgs
 
