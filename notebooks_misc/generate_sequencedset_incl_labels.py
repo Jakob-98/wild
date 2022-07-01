@@ -15,9 +15,9 @@ importlib.reload(backgroundsubseq)
 
 #%%
 datasetpath = "C:\Projects\wild\data\islands\images\images\\"
-picklepath = "C:/temp/islandsdataset/pickles/train10.pk"
-impath = "C:/temp/islandsdataset/images/64xtrain10/"
-labelpath = "C:/temp/islandsdataset/labels/"
+picklepath = "C:/temp/islandsdataset/pickles/val20.pk"
+impath = "C:/temp/islandsdataset/images/64xval20/"
+labelpath = "C:/temp/islandsdataset/labels/64xval20/"
 
 #%%
 with open(picklepath, 'rb') as f:
@@ -29,7 +29,7 @@ labellookup = {i.get('image_id'): str(i.get('category_id')).replace('6','1') for
 imgs_seq_lookup = {}
 for ma in meta_anno:
     imgs_seq_lookup.setdefault(ma.get('seq_id','empty'),[]).append(ma)
-for sequence in tqdm(sequences[811:814]):
+for sequence in tqdm(sequences):
     filenames = [i.get('file_name') for i in imgs_seq_lookup.get(sequence)]
     ids = [i.get('image_id') for i in imgs_seq_lookup.get(sequence)]
     p = lambda x: str(Path(datasetpath) / x)
