@@ -1,0 +1,64 @@
+wandb: Currently logged in as: jakobs. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.12.21
+wandb: Run data is saved locally in /home/serlierj/test_batchscripts/ghostnet/dual_ghostnet/ghostnet_20epochs/wandb/run-20220730_173446-itrwpbsa
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run wild-waterfall-31
+wandb: ⭐️ View project at https://wandb.ai/jakobs/uncategorized
+wandb: 🚀 View run at https://wandb.ai/jakobs/uncategorized/runs/itrwpbsa
+/home/serlierj/envs/wild/lib/python3.7/site-packages/torchmetrics/utilities/prints.py:36: UserWarning: Metric `AUROC` will save all targets and predictions in buffer. For large datasets this may lead to large memory footprint.
+  warnings.warn(*args, **kwargs)
+Multiprocessing is handled by SLURM.
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/serlierj/envs/wild/lib/python3.7/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:245: PossibleUserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  category=PossibleUserWarning,
+/home/serlierj/envs/wild/lib/python3.7/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  ../aten/src/ATen/native/TensorShape.cpp:2895.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/serlierj/envs/wild/lib/python3.7/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:231: UserWarning: You called `self.log('confusion_matrix', ...)` in your `validation_epoch_end` but the value needs to be floating point. Converting it to torch.float32.
+  f"You called `self.log({self.meta.name!r}, ...)` in your `{self.meta.fx}` but the value needs to"
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.001 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: \ 0.028 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: | 0.028 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: / 0.028 MB of 0.036 MB uploaded (0.000 MB deduped)wandb: - 0.028 MB of 0.036 MB uploaded (0.000 MB deduped)wandb: \ 0.033 MB of 0.036 MB uploaded (0.000 MB deduped)wandb: | 0.036 MB of 0.036 MB uploaded (0.000 MB deduped)wandb: / 0.036 MB of 0.036 MB uploaded (0.000 MB deduped)wandb: - 0.036 MB of 0.036 MB uploaded (0.000 MB deduped)wandb: \ 0.036 MB of 0.036 MB uploaded (0.000 MB deduped)wandb: | 0.036 MB of 0.036 MB uploaded (0.000 MB deduped)wandb: / 0.036 MB of 0.036 MB uploaded (0.000 MB deduped)wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:   class_0_precision ▁
+wandb:      class_0_recall ▁
+wandb:   class_1_precision ▁
+wandb:   class_2_precision ▁
+wandb:      class_2_recall ▁
+wandb:   class_3_precision ▁
+wandb:   class_4_precision ▁
+wandb:      class_4_recall ▁
+wandb:   class_5_precision ▁
+wandb:    confusion_matrix ▁
+wandb:               epoch ▁
+wandb: trainer/global_step ▁
+wandb:             val_acc ▁
+wandb:              val_f1 ▁
+wandb:            val_loss ▁
+wandb: 
+wandb: Run summary:
+wandb:   class_0_precision 0.88352
+wandb:      class_0_recall 0.69982
+wandb:   class_1_precision 0.0
+wandb:      class_1_recall nan
+wandb:   class_2_precision 0.50984
+wandb:      class_2_recall 0.64995
+wandb:   class_3_precision 0.0
+wandb:      class_3_recall nan
+wandb:   class_4_precision 0.6054
+wandb:      class_4_recall 0.72137
+wandb:   class_5_precision 0.0
+wandb:      class_5_recall nan
+wandb:    confusion_matrix 186.19444
+wandb:               epoch 0
+wandb: trainer/global_step 0
+wandb:             val_acc 0.69909
+wandb:              val_f1 0.69909
+wandb:            val_loss 0.84615
+wandb: 
+wandb: Synced wild-waterfall-31: https://wandb.ai/jakobs/uncategorized/runs/itrwpbsa
+wandb: Synced 5 W&B file(s), 1 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20220730_173446-itrwpbsa/logs
